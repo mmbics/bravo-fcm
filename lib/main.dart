@@ -3,6 +3,7 @@
 import 'dart:developer';
 import 'package:bravo_fcm/constants.dart';
 import 'package:bravo_fcm/firebase_options.dart';
+import 'package:bravo_fcm/story_board.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -104,6 +105,14 @@ class _MyHomePageState extends State<MyHomePage> {
     super.didChangeDependencies();
   }
 
+  Future<void> _onNotificationTap(NotificationResponse response) async {
+    Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+      return const StoryBoard();
+    }));
+
+    // You can add more conditions based on different payloads.
+  }
+
   @override
   void initState() {
     super.initState();
@@ -112,6 +121,14 @@ class _MyHomePageState extends State<MyHomePage> {
     _textSetToken = TextEditingController();
     _textTitle = TextEditingController();
     _textBody = TextEditingController();
+
+    var initializationSettinsAndroid =
+        const AndroidInitializationSettings('@mipmap/ic_launcher');
+    var initializationSettings =
+        InitializationSettings(android: initializationSettinsAndroid);
+
+    flutterLocalNotificationsPlugin.initialize(initializationSettings,
+        onDidReceiveNotificationResponse: _onNotificationTap);
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       RemoteNotification? notification = message.notification;
