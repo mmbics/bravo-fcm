@@ -7,9 +7,9 @@ class StoryBoard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Story Board"),
+        title: const Text("Story Board"),
       ),
-      body: Center(child: Text("Kee Mite")),
+      body: const Center(child: Text("Kee Mite")),
     );
   }
 }

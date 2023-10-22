@@ -30,8 +30,8 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
   await flutterLocalNotificationsPlugin
       .resolvePlatformSpecificImplementation<
           AndroidFlutterLocalNotificationsPlugin>()
@@ -43,7 +43,6 @@ Future<void> main() async {
   );
 
   runApp(const MyApp());
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 }
 
 class MyApp extends StatelessWidget {
@@ -106,6 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
     super.didChangeDependencies();
   }
 
+  @pragma('vm:entry-point')
   Future<void> _onNotificationTap(NotificationResponse response) async {
     Navigator.of(context).push(MaterialPageRoute(builder: (_) {
       return const StoryBoard();
@@ -129,7 +129,8 @@ class _MyHomePageState extends State<MyHomePage> {
         InitializationSettings(android: initializationSettinsAndroid);
 
     flutterLocalNotificationsPlugin.initialize(initializationSettings,
-        onDidReceiveNotificationResponse: _onNotificationTap);
+        onDidReceiveNotificationResponse: _onNotificationTap,
+        onDidReceiveBackgroundNotificationResponse: _onNotificationTap);
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       RemoteNotification? notification = message.notification;
