@@ -31,7 +31,6 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   await flutterLocalNotificationsPlugin
       .resolvePlatformSpecificImplementation<
@@ -42,7 +41,9 @@ Future<void> main() async {
     badge: true,
     sound: true,
   );
+
   runApp(const MyApp());
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 }
 
 class MyApp extends StatelessWidget {
@@ -133,19 +134,11 @@ class _MyHomePageState extends State<MyHomePage> {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification?.android;
-      log("""
-hashcode: ${notification.hashCode}
-title: ${notification!.title}
-body: ${notification.body}
-channelId: ${channel.id}
-channelName: ${channel.name}
-channelDescription: ${channel.description}
-""");
 
       if (android != null) {
         flutterLocalNotificationsPlugin.show(
           notification.hashCode,
-          notification.title,
+          notification!.title,
           notification.body,
           NotificationDetails(
             android: AndroidNotificationDetails(
