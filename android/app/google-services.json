@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "308188720559",
+    "project_id": "sharphwaykyamal",
+    "storage_bucket": "sharphwaykyamal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:308188720559:android:a9ad42d58c6b60bec4d35a",
+        "android_client_info": {
+          "package_name": "com.duke.bravo_fcm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "308188720559-lsn44la2vb3hbhhpk46qaoc78k2e4lj5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAD9VserBc0LTFuTBkEd5n5VgYCmuyUrT4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "308188720559-lsn44la2vb3hbhhpk46qaoc78k2e4lj5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:308188720559:android:a96172248ce13638c4d35a",
+        "android_client_info": {
+          "package_name": "com.jack.sharphway"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "308188720559-lsn44la2vb3hbhhpk46qaoc78k2e4lj5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAD9VserBc0LTFuTBkEd5n5VgYCmuyUrT4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "308188720559-lsn44la2vb3hbhhpk46qaoc78k2e4lj5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
